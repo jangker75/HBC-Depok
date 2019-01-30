@@ -1,4 +1,4 @@
-package org.dalol.moviedemo
+package com.hbc.depok
 
 import org.junit.Test
 

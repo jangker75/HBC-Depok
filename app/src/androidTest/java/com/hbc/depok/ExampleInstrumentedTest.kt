@@ -1,4 +1,4 @@
-package org.dalol.moviedemo
+package com.hbc.depok
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
