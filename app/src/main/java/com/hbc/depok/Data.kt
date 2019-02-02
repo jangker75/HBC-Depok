@@ -12,4 +12,5 @@ class Data {
     var Alamat: String? = null
     var Nama: String? = null
     var No_Telp: String? = null
+    var foto1: String? = null
 }
