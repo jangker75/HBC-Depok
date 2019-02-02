@@ -1,8 +1,11 @@
 package com.hbc.depok
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.view.LayoutInflater
 import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -20,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mainAdapter = MainAdapter()
-        rv_recycler.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        rv_recycler.layoutManager = LinearLayoutManager(this)
         rv_recycler.adapter = mainAdapter
 
         val retrofit: Retrofit = Retrofit.Builder()

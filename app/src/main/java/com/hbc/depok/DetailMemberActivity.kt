@@ -1,60 +1,47 @@
 package com.hbc.depok
 
-import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.detail_member.*
-import kotlinx.android.synthetic.main.item_data_layout.*
-import kotlinx.android.synthetic.main.item_data_layout.view.*
 
 class DetailMemberActivity : AppCompatActivity() {
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        //   rv_recycler.setBackgroundColor(Color.RED)
-        rv_recycler.layoutManager = LinearLayoutManager(this)
-        rv_recycler.adapter = DetailMemberAdapter()
-    }
+        setContentView(R.layout.detail_member)
 
-    private class DetailMemberAdapter : RecyclerView.Adapter<DetailMemberViewHolder>() {
-        private val data: MutableList<Data> = mutableListOf()
-        override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DetailMemberViewHolder {
+        val detailId = intent?.getStringExtra(DataViewHolder.MEMBER_ID_KEY)
+        val detailNama = intent?.getStringExtra(DataViewHolder.MEMBER_NAMA_KEY)
+        val detailAlamat = intent?.getStringExtra(DataViewHolder.MEMBER_ALAMAT_KEY)
+        val detailNoTelp = intent?.getStringExtra(DataViewHolder.MEMBER_NO_TELP_KEY)
+        val detailNoPlat = intent?.getStringExtra(DataViewHolder.MEMBER_NO_PLAT_KEY)
 
-            val layoutInflater = LayoutInflater.from(parent?.context)
-            val memberView = layoutInflater.inflate(R.layout.detail_member, parent, false)
-            // dmView.setBackgroundColor(Color.BLUE)
-            //      dmView.minimumHeight = 50
-            return DetailMemberViewHolder(memberView)
-        }
+        supportActionBar?.title = detailNama
+        tvdetailId?.text = detailId
+        tvdetailNama?.text = detailNama
+        tvdetailAlamat?.text = detailAlamat
+        tvdetailTelp?.text = detailNoTelp
+        tvdetailPlat?.text = detailNoPlat
 
-        override fun getItemCount(): Int {
-            return 1
-        }
+       viewPager.adapter = MyPagerAdapter(supportFragmentManager)
 
-        override fun onBindViewHolder(holder: DetailMemberViewHolder?, position: Int) {
-       //     val data = data.get(position)
-         //   holder?.customView?.txtID?.text = data.kode_anggota
-        //    holder?.customView?.txtNama?.text = data.Nama
-          //  holder?.customView?.txtPlat?.text = data.No_Telp
-            // holder.c(data[position])
-      //      val imgFoto1 = holder?.customView?.imgView
-      //      Picasso.get().load(data.foto1).into(imgFoto1)
-        }
-
+        // Initialize the MoviesPagerAdapter
 
     }
+// inner class FOTO {
+//        var foto1: String = intent.getStringExtra(DataViewHolder.MEMBER_FOTO1_KEY)
+//        var foto2: String = intent.getStringExtra(DataViewHolder.MEMBER_FOTO2_KEY)
+//        var foto3: String? = intent.getStringExtra(DataViewHolder.MEMBER_FOTO3_KEY)
+//        var foto4: String? = intent.getStringExtra(DataViewHolder.MEMBER_FOTO4_KEY)
+//        var foto5: String? = intent.getStringExtra(DataViewHolder.MEMBER_FOTO5_KEY)
+//    }
 
-    private class DetailMemberViewHolder(val customView: View) : RecyclerView.ViewHolder(customView) {
-
-    }
 }
+
+
+
+

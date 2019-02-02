@@ -13,4 +13,8 @@ class Data {
     var Nama: String? = null
     var No_Telp: String? = null
     var foto1: String? = null
+    var foto2: String? = null
+    var foto3: String? = null
+    var foto4: String? = null
+    var foto5: String? = null
 }
