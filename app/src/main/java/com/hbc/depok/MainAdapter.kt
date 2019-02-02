@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 
-class UsersAdapter : RecyclerView.Adapter<UsersAdapter.DataViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<MainAdapter.DataViewHolder>() {
 
     private val data: MutableList<Data> = mutableListOf()
 
@@ -19,7 +19,20 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.DataViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        holder.bindModel(data[position])
+        val txtID: TextView = holder.itemView.findViewById(R.id.txtID)
+        val txtNama: TextView = holder.itemView.findViewById(R.id.txtNama)
+        val txtPlat: TextView = holder.itemView.findViewById(R.id.txtPlat)
+        //    val movieAvatarImage : ImageView = itemView.findViewById(R.id.movieAvatar)
+
+        fun bindModel(data: Data) {
+            txtID.text = data.kode_anggota
+            txtNama.text = data.Nama
+            txtPlat.text = data.No_plat
+            //   Picasso.get().load(data.foto).into(imgView)
+        }
+        bindModel(data[position])
+
+
     }
 
     fun setData(datas: List<Data>) {
@@ -29,16 +42,6 @@ class UsersAdapter : RecyclerView.Adapter<UsersAdapter.DataViewHolder>() {
 
     inner class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val txtID: TextView = itemView.findViewById(R.id.txtID)
-        val txtNama: TextView = itemView.findViewById(R.id.txtNama)
-        val txtPlat: TextView = itemView.findViewById(R.id.txtPlat)
-        //    val movieAvatarImage : ImageView = itemView.findViewById(R.id.movieAvatar)
 
-        fun bindModel(data: Data) {
-            txtID.text = data.kode_anggota
-            txtNama.text = data.Nama
-            txtPlat.text = data.No_plat
-            //   Picasso.get().load(data.foto).into(imgView)
-        }
     }
 }
