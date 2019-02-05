@@ -6,7 +6,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+    
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        app:tabGravity="center"
+        />
     <android.support.v4.view.ViewPager
+        app:layout_constraintTop_toBottomOf="@+id/tabs"
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="250dp">
@@ -20,7 +28,7 @@
         android:paddingLeft="15dp"
         android:text="ID"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/viewPager" />
 
     <TextView
@@ -31,7 +39,7 @@
         android:paddingLeft="15sp"
         android:text="NAMA"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailId1" />
 
     <TextView
@@ -42,7 +50,7 @@
         android:paddingLeft="15sp"
         android:text="ALAMAT"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailNama1" />
 
     <TextView
@@ -53,7 +61,7 @@
         android:paddingLeft="15sp"
         android:text="No Telp"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailAlamat1" />
 
     <TextView
@@ -64,7 +72,7 @@
         android:paddingLeft="15sp"
         android:text="No Plat"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailTlp1" />
 
     <TextView
@@ -74,7 +82,7 @@
         android:paddingLeft="15sp"
         android:text="ID"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/tvdetailId1"
         app:layout_constraintTop_toBottomOf="@+id/viewPager" />
 
@@ -86,7 +94,7 @@
         android:text="Nama"
         android:layout_marginTop="10dp"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/tvdetailNama1"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailId" />
 a
@@ -98,7 +106,7 @@ a
         android:text="ALAMAT"
         android:layout_marginTop="10dp"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/tvdetailAlamat1"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailNama" />
 
@@ -110,7 +118,7 @@ a
         android:text="No Telp"
         android:layout_marginTop="10dp"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/tvdetailTlp1"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailAlamat" />
 
@@ -122,7 +130,7 @@ a
         android:text="No Plat"
         android:layout_marginTop="10dp"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/tvdetailPlat1"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailTelp" />
 </android.support.constraint.ConstraintLayout>
