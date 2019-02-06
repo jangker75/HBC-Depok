@@ -23,7 +23,7 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val foto2 = arguments?.getString("FOTO 2")
+        val foto2 = arguments?.getString("IMAGE2")
         println("FOTO 2 di fragment = " +foto2)
         if(foto2 == null)
             GlideApp.with(this).load(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher).into(imageFirst)

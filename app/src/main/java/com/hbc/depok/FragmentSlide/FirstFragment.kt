@@ -16,6 +16,13 @@ import kotlinx.android.synthetic.main.fragment_first.*
 
 class FirstFragment : Fragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val foto1 = this.arguments?.getString("IMAGE1")
+        val foto2 = this.arguments?.getBundle("IMAGE1")
+        println("FOTO 1 di fragment = " +foto1)
+        println("FOTO 1-1 di fragment = " +foto2)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -26,11 +33,11 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val foto1 = this.arguments?.getString("FOTO 1")
-        println("FOTO 1 di fragment = " +foto1)
-        if (foto1 == null)
-            Glide.with(this).load(R.mipmap.ic_launcher).into(imageFirst)
-        else Glide.with(this).load(foto1).into(imageFirst)
+
+//        if (foto2 == null)
+//            Glide.with(this).load(R.mipmap.ic_launcher).into(imageFirst)
+//        else Glide.with(this).load(foto2).into(imageFirst)
+
     }
 
 
