@@ -3,6 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="loading_text">Loading ...</string>
+    <string name="search_hint">Search Name or Plat</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

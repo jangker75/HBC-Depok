@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
@@ -14,41 +16,84 @@ import com.bumptech.glide.request.RequestOptions
 import com.hbc.depok.FragmentSlide.FirstFragment
 import com.hbc.depok.FragmentSlide.SecondFragment
 import com.hbc.depok.R.id.imageFirst
+import com.hbc.depok.R.id.txtID
 import kotlinx.android.synthetic.main.fragment_first.*
+import java.lang.reflect.Member
+import java.util.ArrayList
 
-class MainAdapter : RecyclerView.Adapter<DataViewHolder>() {
-
+class MainAdapter : RecyclerView.Adapter<DataViewHolder>(),Filterable {
+    private var memberSearchList:MutableList<Data> = mutableListOf()
+//  private var memberSearchList: List<Data>? = null
     private val data: MutableList<Data> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         return DataViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_data_layout, parent, false))
     }
-
+init {
+    memberSearchList = data
+}
     override fun getItemCount(): Int {
-        return data.size
+        return memberSearchList!!.size
     }
+    override fun getFilter(): Filter {
 
-    override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        val txtID: TextView = holder.itemView.findViewById(R.id.txtID)
-        val txtNama: TextView = holder.itemView.findViewById(R.id.txtNama)
-        val txtPlat: TextView = holder.itemView.findViewById(R.id.txtPlat)
-        val imageTumb: ImageView = holder?.itemView.findViewById(R.id.imgView)
-        holder?.data = data[position]
+        return object : Filter() {
+            override fun performFiltering(charSequence: CharSequence): Filter.FilterResults {
+                val charString = charSequence.toString()
+                if (charString.isEmpty()) {
+                    memberSearchList=data
+                } else {
+                    var filteredList = arrayListOf<Data>()
+                    for (row in data) {
 
-        fun bindModel(data: Data) {
-            txtID.text = data.kode_anggota
-            txtNama.text = data.Nama
-            txtPlat.text = data.No_plat
+                        if (row.No_plat!!.toLowerCase().contains(charString.toLowerCase())||row.Nama!!.toLowerCase().contains(charString.toLowerCase()) || row.kode_anggota!!.contains(charSequence)) {
+                            filteredList.add(row)
+                        }
+                    }
 
-            //  val options: RequestOptions = RequestOptions().error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher)
-            GlideApp.with(holder.itemView.context)
-                    .load(data.foto1)
-                    .placeholder(R.mipmap.ic_launcher)
-                    .into(imageTumb)
-            // Glide.with(holder?.itemView?.context).load(data.foto1).apply(options).into(imageTumb)
-            //  Picasso.get(holder?.itemView.context).load(data.foto1).into(imageTumb)
+                    memberSearchList = filteredList
+                }
+
+                val filterResults = Filter.FilterResults()
+                filterResults.values = memberSearchList
+                return filterResults
+            }
+
+            override fun publishResults(charSequence: CharSequence, filterResults: Filter.FilterResults) {
+                memberSearchList = filterResults.values as ArrayList<Data>
+                notifyDataSetChanged()
+            }
         }
-        bindModel(data[position])
+    }
+    override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
+        val member = memberSearchList!![position]
+        holder.txtId.text = member.kode_anggota
+        holder.txtNama.text = member.Nama
+        holder.txtPlat.text = member.No_plat
+        GlideApp.with(holder.itemView.context)
+                .load(member.foto1)
+                .placeholder(R.mipmap.ic_launcher)
+                .into(holder.imageTumb)
+//        val txtID: TextView = holder.itemView.findViewById(R.id.txtID)
+//        val txtNama: TextView = holder.itemView.findViewById(R.id.txtNama)
+//        val txtPlat: TextView = holder.itemView.findViewById(R.id.txtPlat)
+//        val imageTumb: ImageView = holder?.itemView.findViewById(R.id.imgView)
+        holder?.member = memberSearchList[position]
+
+//        fun bindModel(data: Data) {
+//            txtID.text = data.kode_anggota
+//            txtNama.text = data.Nama
+//            txtPlat.text = data.No_plat
+//
+//            //  val options: RequestOptions = RequestOptions().error(R.mipmap.ic_launcher).placeholder(R.mipmap.ic_launcher)
+//            GlideApp.with(holder.itemView.context)
+//                    .load(data.foto1)
+//                    .placeholder(R.mipmap.ic_launcher)
+//                    .into(imageTumb)
+//            // Glide.with(holder?.itemView?.context).load(data.foto1).apply(options).into(imageTumb)
+//            //  Picasso.get(holder?.itemView.context).load(data.foto1).into(imageTumb)
+//        }
+//        bindModel(data[position])
 
 
     }
@@ -61,12 +106,15 @@ class MainAdapter : RecyclerView.Adapter<DataViewHolder>() {
 
 }
 
-class DataViewHolder(itemView: View, var data: Data? = null) : RecyclerView.ViewHolder(itemView) {
-
+class DataViewHolder(itemView: View, var member: Data? = null) : RecyclerView.ViewHolder(itemView) {
+    var txtId: TextView
+    var txtNama: TextView
+    var txtPlat: TextView
+    var imageTumb:ImageView
     companion object {
         val MEMBER_ID_KEY = "ID"
         val MEMBER_NAMA_KEY = "NAMA"
-        val MEMBER_ALAMAT_KEY = "ALAMAT"
+        val MEMBER_SOSMED_KEY = "ALAMAT"
         val MEMBER_NO_TELP_KEY = "NO TELP"
         val MEMBER_NO_PLAT_KEY = "NO PLAT"
         val MEMBER_FOTO1_KEY = "FOTO1"
@@ -78,19 +126,23 @@ class DataViewHolder(itemView: View, var data: Data? = null) : RecyclerView.View
     }
 
     init {
+        imageTumb = itemView.findViewById(R.id.imgView)
+        txtId = itemView.findViewById(R.id.txtID)
+        txtNama = itemView.findViewById(R.id.txtNama)
+        txtPlat = itemView.findViewById(R.id.txtPlat)
         itemView.setOnClickListener {
 
 
             val intent = Intent(itemView.context, DetailMemberActivity::class.java)
 
-            intent.putExtra(MEMBER_ID_KEY, data?.kode_anggota)
-            intent.putExtra(MEMBER_NAMA_KEY, data?.Nama)
-            intent.putExtra(MEMBER_ALAMAT_KEY, data?.Alamat)
-            intent.putExtra(MEMBER_NO_TELP_KEY, data?.No_Telp)
-            intent.putExtra(MEMBER_NO_PLAT_KEY, data?.No_plat)
-            intent.putExtra(MEMBER_FOTO1_KEY, data?.foto1)
-            intent.putExtra(MEMBER_FOTO2_KEY, data?.foto2)
-            intent.putExtra(MEMBER_FOTO3_KEY, data?.foto3)
+            intent.putExtra(MEMBER_ID_KEY, member?.kode_anggota)
+            intent.putExtra(MEMBER_NAMA_KEY, member?.Nama)
+            intent.putExtra(MEMBER_SOSMED_KEY, member?.sosmed)
+            intent.putExtra(MEMBER_NO_TELP_KEY, member?.No_Telp)
+            intent.putExtra(MEMBER_NO_PLAT_KEY, member?.No_plat)
+            intent.putExtra(MEMBER_FOTO1_KEY, member?.foto1)
+            intent.putExtra(MEMBER_FOTO2_KEY, member?.foto2)
+            intent.putExtra(MEMBER_FOTO3_KEY, member?.foto3)
 //            val FOTO1 :String? = data?.foto1
 //            val FOTO2 :String? = data?.foto2
 //            val bundle1 = Bundle()

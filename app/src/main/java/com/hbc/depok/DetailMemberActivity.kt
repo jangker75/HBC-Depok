@@ -21,7 +21,7 @@ class DetailMemberActivity : AppCompatActivity() {
 
         val detailId = intent?.getStringExtra(DataViewHolder.MEMBER_ID_KEY)
         val detailNama = intent?.getStringExtra(DataViewHolder.MEMBER_NAMA_KEY)
-        val detailAlamat = intent?.getStringExtra(DataViewHolder.MEMBER_ALAMAT_KEY)
+        val detailSosmed = intent?.getStringExtra(DataViewHolder.MEMBER_SOSMED_KEY)
         val detailNoTelp = intent?.getStringExtra(DataViewHolder.MEMBER_NO_TELP_KEY)
         val detailNoPlat = intent?.getStringExtra(DataViewHolder.MEMBER_NO_PLAT_KEY)
         val Foto1 = intent?.getStringExtra(DataViewHolder.MEMBER_FOTO1_KEY)
@@ -30,7 +30,7 @@ class DetailMemberActivity : AppCompatActivity() {
         supportActionBar?.title = detailNama
         tvdetailId?.text = detailId
         tvdetailNama?.text = detailNama
-        tvdetailAlamat?.text = detailAlamat
+        tvdetailSosmed?.text = detailSosmed
         tvdetailTelp?.text = detailNoTelp
         tvdetailPlat?.text = detailNoPlat
         setTitle("Member : "+detailNama)
