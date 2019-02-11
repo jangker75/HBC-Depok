@@ -4,12 +4,12 @@ import android.app.SearchManager
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
-import android.view.LayoutInflater
 import android.view.Menu
 import android.widget.Toast
+import com.hbc.depok.network.ApiNetwork
+import com.hbc.depok.util.MainAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*

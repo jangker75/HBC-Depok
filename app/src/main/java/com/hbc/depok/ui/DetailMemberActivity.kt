@@ -1,4 +1,4 @@
-package com.hbc.depok
+package com.hbc.depok.ui
 
 
 import android.os.Bundle
@@ -6,8 +6,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
-import com.hbc.depok.FragmentSlide.FirstFragment
-import com.hbc.depok.FragmentSlide.SecondFragment
+import com.hbc.depok.util.DataViewHolder
+import com.hbc.depok.util.GlideApp
+import com.hbc.depok.R
 import kotlinx.android.synthetic.main.detail_member.*
 
 class DetailMemberActivity : AppCompatActivity() {

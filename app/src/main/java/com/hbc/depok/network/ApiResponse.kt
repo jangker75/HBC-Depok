@@ -1,4 +1,6 @@
-package com.hbc.depok
+package com.hbc.depok.network
+
+import com.hbc.depok.model.Data
 
 /**
  * @author Filippo

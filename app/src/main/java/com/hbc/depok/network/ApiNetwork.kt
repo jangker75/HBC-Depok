@@ -1,4 +1,4 @@
-package com.hbc.depok
+package com.hbc.depok.network
 
 import io.reactivex.Observable
 import retrofit2.http.GET

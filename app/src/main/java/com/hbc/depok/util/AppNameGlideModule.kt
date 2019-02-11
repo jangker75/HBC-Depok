@@ -1,4 +1,4 @@
-package com.hbc.depok
+package com.hbc.depok.util
 
 import android.content.Context
 import com.bumptech.glide.GlideBuilder

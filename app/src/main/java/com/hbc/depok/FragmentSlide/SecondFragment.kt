@@ -1,16 +1,14 @@
 package com.hbc.depok.FragmentSlide
 
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hbc.depok.DetailMemberActivity
-import com.hbc.depok.GlideApp
 
 import com.hbc.depok.R
+import com.hbc.depok.util.GlideApp
 import kotlinx.android.synthetic.main.fragment_first.*
 
 class SecondFragment : Fragment() {

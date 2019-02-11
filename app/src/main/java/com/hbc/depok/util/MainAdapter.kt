@@ -1,8 +1,6 @@
-package com.hbc.depok
+package com.hbc.depok.util
 
-import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +9,10 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.hbc.depok.FragmentSlide.FirstFragment
-import com.hbc.depok.FragmentSlide.SecondFragment
-import com.hbc.depok.R.id.imageFirst
-import com.hbc.depok.R.id.txtID
-import kotlinx.android.synthetic.main.fragment_first.*
-import java.lang.reflect.Member
+import com.hbc.depok.util.GlideApp
+import com.hbc.depok.R
+import com.hbc.depok.model.Data
+import com.hbc.depok.ui.DetailMemberActivity
 import java.util.ArrayList
 
 class MainAdapter : RecyclerView.Adapter<DataViewHolder>(),Filterable {

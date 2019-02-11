@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingLeft="15sp"
-        android:text="Sosmed"
+        android:text="ALAMAT"
         android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailNama1" />
@@ -98,14 +98,13 @@
         app:layout_constraintLeft_toRightOf="@id/tvdetailNama1"
         app:layout_constraintTop_toBottomOf="@+id/tvdetailId" />
 a
-
     <TextView
         android:id="@+id/tvdetailSosmed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:paddingLeft="15sp"
-        android:text="Sosmed"
+        android:text="ALAMAT"
+        android:layout_marginTop="10dp"
         android:textColor="#000"
         android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/tvdetailSosmed1"
