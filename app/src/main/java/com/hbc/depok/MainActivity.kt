@@ -8,7 +8,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.Menu
 import android.widget.Toast
+import com.hbc.depok.api.masterAPI
+import com.hbc.depok.api.masterAPI.getRetrofit
 import com.hbc.depok.network.ApiNetwork
+import com.hbc.depok.ui.LoginActivity
 import com.hbc.depok.util.MainAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -25,19 +28,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         mainAdapter = MainAdapter()
         rv_recycler.layoutManager = LinearLayoutManager(this)
         rv_recycler.adapter = mainAdapter
 
-        val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl("http://hbcdepok.com/data/public/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build()
+        val retrofit = getRetrofit.create(ApiNetwork::class.java)
 
-        val apiData = retrofit.create(ApiNetwork::class.java)
-
-        apiData.getData()
+        retrofit.getData()
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
