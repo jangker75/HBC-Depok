@@ -17,6 +17,6 @@ interface ApiNetwork {
     @GET("list_member")
     fun getData(): Observable<ApiResponse>
 
-    @GET("login?")
+    @GET("cek_login?")
     fun getLogin(@Query("kode_anggota") kode_anggota: String, @Query("password") password: String): Call<LoginModel>
 }
