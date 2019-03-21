@@ -1,66 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/AppCompat.Light.NoActionBar">
+    android:orientation="vertical">
 
 
     <TextView
+        android:id="@+id/judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="Bold"
         android:gravity="center"
+        android:paddingLeft="30sp"
         android:text="HBC Depok"
-        android:textColor="#000"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        app:layout_constraintTop_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/article"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="160dp"
-        android:src="@drawable/article"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="251dp" />
+        android:layout_marginLeft="15sp"
+        android:layout_marginTop="40dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/judul"
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/buttonarticle"
+        android:id="@+id/btnArticle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="195dp"
-        android:layout_marginTop="200dp"
         android:text="ARTICLE"
-        android:textColor="#000"
-        android:textSize="25dp" />
+        android:layout_marginLeft="30sp"
+        android:layout_marginTop="70dp"
+        android:textSize="25dp"
+        app:layout_constraintLeft_toRightOf="@id/article"
+        app:layout_constraintTop_toBottomOf="@id/judul"
+        tools:ignore="MissingConstraints" />
 
 
     <ImageView
-        android:id="@+id/list"
+        android:id="@+id/member"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_alignParentLeft="true"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintLeft_toRightOf="parent"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="360dp"
-        android:layout_marginRight="40dp"
-        android:src="@drawable/list"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="251dp" />
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/article"
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/buttonlistm"
+        android:id="@+id/btnMember"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="405dp"
-        android:layout_marginRight="14dp"
         android:text="LIST MEMBER"
-        android:textColor="#000"
-        android:textSize="25dp" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="140dp"
+        android:textSize="25dp"
+        app:layout_constraintLeft_toRightOf="@id/member"
+        app:layout_constraintTop_toBottomOf="@+id/btnArticle"
+        tools:ignore="MissingConstraints" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

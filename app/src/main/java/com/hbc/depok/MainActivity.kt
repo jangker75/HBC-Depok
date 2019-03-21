@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.SearchManager
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -89,23 +90,15 @@ class MainActivity : AppCompatActivity() {
         })
         return true
     }
-
-    override fun onBackPressed() {
-        // close search view on back button pressed
-        if (!searchView!!.isIconified) {
-            searchView!!.isIconified = true
-            return
-        }
-
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Are you sure!")
-        builder.setMessage("Do you want to close the app?")
-        builder.setPositiveButton("Yes", { dialogInterface: DialogInterface, i: Int ->
-            finish()
-        })
-        builder.setNegativeButton("No", { dialogInterface: DialogInterface, i: Int -> })
-        builder.show()
-    }
+//
+//    override fun onBackPressed() {
+//        // close search view on back button pressed
+//        if (!searchView!!.isIconified) {
+//            searchView!!.isIconified = true
+//            return
+//        }
+//        val intentMenu = Intent(this, MenuActivity::class.java)
+//        startActivity(intentMenu)
+//        this.finish()
+//    }
 }
-
-

@@ -1,13 +1,10 @@
-package com.hbc.depok.ui
+package com.hbc.depok
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log.d
 import android.widget.Toast
-import com.hbc.depok.MainActivity
-import com.hbc.depok.MenuActivity
-import com.hbc.depok.R
 import com.hbc.depok.api.masterAPI.getRetrofit
 import com.hbc.depok.model.LoginModel
 import com.hbc.depok.network.ApiNetwork

@@ -1,6 +1,6 @@
 package com.hbc.depok
 
-class Data {
+class MemberModel {
 
     var No_plat: String? = null
     var kode_anggota: String? = null
@@ -16,5 +16,4 @@ class Data {
     var title: String? = null
     var content: String? = null
     var image:String? = null
-    var artikel:String? = null
 }

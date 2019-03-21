@@ -12,10 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MenuActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
-            android:name=".ArtikelActivity"
+            android:name=".MenuActivity"
+            android:label="MAIN MENU"
+            android:launchMode="singleTop">
+        </activity>
+
+        <activity
+            android:name=".ArticleActivity"
             android:launchMode="singleTop">
             <meta-data
                 android:name="android.app.searchable"
@@ -38,17 +50,12 @@
                 android:value=".MainActivity" />
         </activity>
 
-        <activity android:name=".ui.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
+          <activity
             android:name=".MainActivity"
             android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuActivity" />
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/search_layout" />
@@ -56,11 +63,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
                 <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+       <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
+
 
         <activity
             android:name=".ui.DetailMemberActivity"

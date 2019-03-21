@@ -9,16 +9,16 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
-import com.hbc.depok.Data
+import com.hbc.depok.MemberModel
 import com.hbc.depok.R
-
+import com.hbc.depok.util.GlideApp
 import com.hbc.depok.ui.DetailMemberActivity
 import java.util.ArrayList
 
 class MainAdapter : RecyclerView.Adapter<DataViewHolder>(),Filterable {
-    private var memberSearchList:MutableList<Data> = mutableListOf()
+    private var memberSearchList:MutableList<MemberModel> = mutableListOf()
 //  private var memberSearchList: List<Data>? = null
-    private val data: MutableList<Data> = mutableListOf()
+    private val data: MutableList<MemberModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         return DataViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_data_layout, parent, false))
@@ -37,7 +37,7 @@ init {
                 if (charString.isEmpty()) {
                     memberSearchList=data
                 } else {
-                    var filteredList = arrayListOf<Data>()
+                    var filteredList = arrayListOf<MemberModel>()
                     for (row in data) {
 
                         if (row.No_plat!!.toLowerCase().contains(charString.toLowerCase())||row.Nama!!.toLowerCase().contains(charString.toLowerCase()) || row.kode_anggota!!.contains(charSequence)) {
@@ -54,7 +54,7 @@ init {
             }
 
             override fun publishResults(charSequence: CharSequence, filterResults: Filter.FilterResults) {
-                memberSearchList = filterResults.values as ArrayList<Data>
+                memberSearchList = filterResults.values as ArrayList<MemberModel>
                 notifyDataSetChanged()
             }
         }
@@ -92,7 +92,7 @@ init {
 
     }
 
-    fun setData(datas: List<Data>) {
+    fun setData(datas: List<MemberModel>) {
         data.addAll(datas)
         notifyDataSetChanged()
     }
@@ -100,7 +100,7 @@ init {
 
 }
 
-class DataViewHolder(itemView: View, var member: Data? = null) : RecyclerView.ViewHolder(itemView) {
+class DataViewHolder(itemView: View, var member: MemberModel? = null) : RecyclerView.ViewHolder(itemView) {
     var txtId: TextView
     var txtNama: TextView
     var txtPlat: TextView

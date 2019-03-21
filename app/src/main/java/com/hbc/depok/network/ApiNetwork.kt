@@ -9,10 +9,10 @@ import retrofit2.http.Query
 
 interface ApiNetwork {
     @GET("artikel")
-    fun getArtikel(): Observable<ApiResponse>
+    fun getArtikel(): Observable<ApiResponseMember>
 
     @GET("list_member")
-    fun getData(): Observable<ApiResponse>
+    fun getData(): Observable<ApiResponseMember>
 
     @GET("login?")
     fun getLogin(@Query("kode_anggota") kode_anggota: String, @Query("password") password: String): Call<LoginModel>
