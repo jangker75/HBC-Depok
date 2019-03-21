@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/AppCompat.Light.NoActionBar">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:fontFamily="Bold"
+        android:gravity="center"
+        android:text="HBC Depok"
+        android:textColor="#000"
+        android:textSize="50dp" />
+
+    <ImageView
+        android:id="@+id/article"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/article"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="251dp" />
+
+    <Button
+        android:id="@+id/buttonarticle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="195dp"
+        android:layout_marginTop="200dp"
+        android:text="ARTICLE"
+        android:textColor="#000"
+        android:textSize="25dp" />
+
+
+    <ImageView
+        android:id="@+id/list"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="360dp"
+        android:layout_marginRight="40dp"
+        android:src="@drawable/list"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="251dp" />
+
+    <Button
+        android:id="@+id/buttonlistm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="405dp"
+        android:layout_marginRight="14dp"
+        android:text="LIST MEMBER"
+        android:textColor="#000"
+        android:textSize="25dp" />
+
+</RelativeLayout>
