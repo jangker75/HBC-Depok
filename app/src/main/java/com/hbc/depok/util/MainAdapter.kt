@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.hbc.depok.MemberModel
 import com.hbc.depok.R
+import com.hbc.depok.model.ArticleModel
 import com.hbc.depok.util.GlideApp
 import com.hbc.depok.ui.DetailMemberActivity
 import java.util.ArrayList
@@ -114,9 +115,6 @@ class DataViewHolder(itemView: View, var member: MemberModel? = null) : Recycler
         val MEMBER_FOTO1_KEY = "FOTO1"
         val MEMBER_FOTO2_KEY = "FOTO2"
         val MEMBER_FOTO3_KEY = "FOTO3"
-        val MEMBER_title_KEY = "title"
-        val MEMBER_content_KEY = "content"
-        val MEMBER_image_KEY = "image"
 
         //    val MEMBER_FOTO4_KEY = "FOTO4"
         //    val MEMBER_FOTO5_KEY = "FOTO5"
@@ -141,9 +139,6 @@ class DataViewHolder(itemView: View, var member: MemberModel? = null) : Recycler
             intent.putExtra(MEMBER_FOTO1_KEY, member?.foto1)
             intent.putExtra(MEMBER_FOTO2_KEY, member?.foto2)
             intent.putExtra(MEMBER_FOTO3_KEY, member?.foto3)
-            intent.putExtra(MEMBER_title_KEY, member?.title)
-            intent.putExtra(MEMBER_content_KEY, member?.content)
-            intent.putExtra(MEMBER_image_KEY, member?.image)
 //            val FOTO1 :String? = data?.foto1
 //            val FOTO2 :String? = data?.foto2
 //            val bundle1 = Bundle()

@@ -8,8 +8,8 @@ import retrofit2.http.Query
 
 
 interface ApiNetwork {
-    @GET("artikel")
-    fun getArtikel(): Observable<ApiResponseMember>
+    @GET("article")
+    fun getArtikel(): Observable<ApiResponseArticle>
 
     @GET("list_member")
     fun getData(): Observable<ApiResponseMember>

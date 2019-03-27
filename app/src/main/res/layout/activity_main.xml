@@ -13,14 +13,4 @@
         android:layout_height="match_parent"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:text="Logout"
-        android:textStyle="bold"
-        android:id="@+id/tv_logout"/>
-
 </android.support.v4.widget.SwipeRefreshLayout>
