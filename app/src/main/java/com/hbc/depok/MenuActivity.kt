@@ -10,7 +10,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_menu.*
 
 class MenuActivity : AppCompatActivity() {
-    private var searchView: SearchView? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,6 +26,12 @@ class MenuActivity : AppCompatActivity() {
         btnMember.setOnClickListener {
             Toast.makeText(this, "List Member", Toast.LENGTH_SHORT).show()
             startActivity(intentMember)
+        }
+
+        val intentChangePass = Intent(this, ChangePasswordActivity::class.java)
+        btnChangePassword.setOnClickListener {
+            Toast.makeText(this, "Ganti Password", Toast.LENGTH_SHORT).show()
+            startActivity(intentChangePass)
         }
 
     }

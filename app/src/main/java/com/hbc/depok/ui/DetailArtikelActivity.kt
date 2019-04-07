@@ -12,6 +12,9 @@ import com.hbc.depok.util.DataViewHolderArticle
 import com.hbc.depok.util.GlideApp
 import kotlinx.android.synthetic.main.detail_artikel.*
 import kotlinx.android.synthetic.main.detail_member.*
+import android.widget.TextView
+
+
 
 class DetailArtikelActivity : AppCompatActivity() {
 
@@ -29,7 +32,8 @@ class DetailArtikelActivity : AppCompatActivity() {
         supportActionBar?.title = detailTitleArticle
         tvTanggalTerbit?.text = detailTanggalArticle
         tvdetailtitle?.text = detailTitleArticle
-        tvdetailcontent?.text = detailContentArticle
+      //  tvdetailcontent?.text = detailContentArticle
+       wvContent.loadData(detailContentArticle,"text/html; charset=utf-8", "utf-8")
         GlideApp.with(this).load(detailFotoArticle).placeholder(R.mipmap.ic_launcher).error(R.drawable.no_image).into(imgImageArticle)
     }
 
