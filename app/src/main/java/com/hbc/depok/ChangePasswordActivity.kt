@@ -6,14 +6,10 @@ import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.hbc.depok.api.masterAPI
 import com.hbc.depok.model.GantiPassModel
-import com.hbc.depok.model.LoginModel
 import com.hbc.depok.network.ApiNetwork
-import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.content_change_password.*
 import retrofit2.Call
 import retrofit2.Response

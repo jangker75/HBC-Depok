@@ -22,11 +22,11 @@
         <activity
             android:name=".MenuActivity"
             android:label="Main Menu"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
         <activity
             android:name=".ArticleActivity"
             android:label="List Artikel"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
         <activity
             android:name=".ui.DetailArtikelActivity"
             android:label="Member Detail"
@@ -64,6 +64,12 @@
         <activity
             android:name=".ChangePasswordActivity"
             android:label="Change Password"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name=".FormActivity"
+            android:label="Form"
+            android:parentActivityName=".MenuActivity"
             android:launchMode="singleTop"></activity>
     </application>
 
