@@ -12,10 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
+
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <TextView
                 android:id="@+id/tvJudul"
@@ -24,26 +27,260 @@
                 android:text="Form Pengunduran Diri"
                 android:textSize="30sp" />
 
-            <TextView
-                android:id="@+id/tvangka1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1. "
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvangka2"
 
-                app:layout_constraintTop_toBottomOf="@+id/tvJudul" />
-
-            <TextView
-                android:id="@+id/tvangka2"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/kolomQ1"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="30sp"
-                app:layout_constraintTop_toBottomOf="@+id/tvJudul"
-                app:layout_constraintLeft_toRightOf="@+id/tvangka1" />
-        </android.support.constraint.ConstraintLayout>
+                android:orientation="vertical"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/txtview2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pertanyaan 1"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txtQ1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Alasan Pengunduran Diri?"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:visibility="visible"
+                    android:id="@+id/input_text_Q1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Input here"
+                    android:textSize="30sp"></EditText>
+
+                <RadioGroup
+                    android:visibility="visible"
+                    android:id="@+id/radioGroupQ1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView1">
+
+                    <RadioButton
+                        android:id="@+id/radio1Q1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Perkerjaan" />
+
+                    <RadioButton
+                        android:id="@+id/radio2Q1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keluarga" />
+
+                    <RadioButton
+                        android:id="@+id/radio3Q1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lainnya" />
+
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/kolomQ2"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtview3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pertanyaan 2"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txtQ2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pertanyaan 2"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:visibility="visible"
+                    android:id="@+id/input_text_Q2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Input here"
+                    android:textSize="30sp"
+                    tools:text="" />
+
+                <RadioGroup
+                    android:visibility="visible"
+                    android:id="@+id/radioGroupQ2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView1">
+
+                    <RadioButton
+                        android:id="@+id/radio1Q2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Perkerjaan" />
+
+                    <RadioButton
+                        android:id="@+id/radio2Q2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keluarga" />
+
+                    <RadioButton
+                        android:id="@+id/radio3Q2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lainnya" />
+
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/kolomQ3"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtview4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pertanyaan 3"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txtQ3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pertanyaan 3"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:visibility="visible"
+                    android:id="@+id/input_text_Q3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Input here"
+                    android:textSize="30sp"
+                    tools:text="" />
+
+                <RadioGroup
+                    android:visibility="visible"
+                    android:id="@+id/radioGroupQ3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView1">
+
+                    <RadioButton
+                        android:id="@+id/radio1Q3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Perkerjaan" />
+
+                    <RadioButton
+                        android:id="@+id/radio2Q3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keluarga" />
+
+                    <RadioButton
+                        android:id="@+id/radio3Q3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lainnya" />
+
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/kolomQ4"
+                android:visibility="invisible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtview5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pertanyaan 4"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/txtQ4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pertanyaan 4"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:visibility="visible"
+                    android:id="@+id/input_text_Q4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Input here"
+                    android:textSize="30sp"
+                    tools:text="" />
+
+                <RadioGroup
+                    android:visibility="visible"
+                    android:id="@+id/radioGroupQ4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView1">
+
+                    <RadioButton
+                        android:id="@+id/radio1Q4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Perkerjaan" />
+
+                    <RadioButton
+                        android:id="@+id/radio2Q4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Keluarga" />
+
+                    <RadioButton
+                        android:id="@+id/radio3Q4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lainnya" />
+
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

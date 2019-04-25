@@ -34,6 +34,12 @@ class MenuActivity : AppCompatActivity() {
             startActivity(intentChangePass)
         }
 
+        val intentFormResign = Intent(this, FormActivity::class.java)
+        btnFormResign.setOnClickListener {
+            Toast.makeText(this, "Isi Form", Toast.LENGTH_SHORT).show()
+            startActivity(intentFormResign)
+        }
+
     }
 
 }

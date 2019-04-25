@@ -26,18 +26,18 @@
         <activity
             android:name=".ArticleActivity"
             android:label="List Artikel"
+            android:parentActivityName=".MenuActivity"
             android:launchMode="singleTop" />
         <activity
             android:name=".ui.DetailArtikelActivity"
             android:label="Member Detail"
-            android:launchMode="singleTop">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ArticleActivity" />
+            android:launchMode="singleTop"
+            android:parentActivityName=".ArticleActivity">
         </activity>
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:parentActivityName=".MenuActivity">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/search_layout" />
@@ -51,10 +51,9 @@
         <activity
             android:name=".ui.DetailMemberActivity"
             android:label="Member Detail"
+            android:parentActivityName=".MainActivity"
             android:launchMode="singleTop">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+
         </activity>
 
         <meta-data
@@ -64,6 +63,7 @@
         <activity
             android:name=".ChangePasswordActivity"
             android:label="Change Password"
+            android:parentActivityName=".MenuActivity"
             android:launchMode="singleTop" />
 
         <activity
