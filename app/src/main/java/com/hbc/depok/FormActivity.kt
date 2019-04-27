@@ -7,31 +7,34 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.Toast
 import com.hbc.depok.api.masterAPI
-import com.hbc.depok.model.ArticleModel
 import com.hbc.depok.model.GantiPassModel
+import com.hbc.depok.model.PostFormModel
 import com.hbc.depok.model.SoalModel
 import com.hbc.depok.network.ApiNetwork
 import com.hbc.depok.network.ApiResponseSoal
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_form.*
 import kotlinx.android.synthetic.main.content_change_password.*
 import retrofit2.Call
 import retrofit2.Response
 
+
 class FormActivity : AppCompatActivity() {
     private val dataSoal: MutableList<SoalModel> = mutableListOf()
     val retrofit = masterAPI.getRetrofit.create(ApiNetwork::class.java)
-//    val sharedPreferences = getSharedPreferences("myprefs", Context.MODE_PRIVATE)
-//    val IDLogin = sharedPreferences.getString("kd_anggota", "kd_anggota")
-//    val NamaLogin = sharedPreferences.getString("nama", "nama")
-
+    private var tipeQ1: String? = null
+    private var tipeQ2: String? = null
+    private var tipeQ3: String? = null
+    private var tipeQ4: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form)
-
+        val sharedPreferences = getSharedPreferences("myprefs", Context.MODE_PRIVATE)
+        val IDLogin = sharedPreferences.getString("kd_anggota", "kd_anggota")
+        val NamaLogin = sharedPreferences.getString("nama", "nama")
         retrofit.getSoal()
                 .enqueue(object : retrofit2.Callback<ApiResponseSoal> {
                     override fun onFailure(call: Call<ApiResponseSoal>, t: Throwable) {
@@ -48,9 +51,11 @@ class FormActivity : AppCompatActivity() {
                             val countData = dataSoal.count()
                             for (i in 0 until (countData)) {
                                 if (i == 0) {
+                                    tipeQ1 = dataSoal[i].tipe
                                     if (dataSoal[i].soal != null) {
                                         kolomQ1.visibility = View.VISIBLE
                                         if (dataSoal[i].tipe == "Radio") {
+
                                             input_text_Q1.visibility = View.GONE
                                             radioGroupQ1.visibility = View.VISIBLE
                                             txtQ1.setText(dataSoal[i].soal)
@@ -64,6 +69,7 @@ class FormActivity : AppCompatActivity() {
                                         }
                                     }
                                 } else if (i == 1) {
+                                    tipeQ2 = dataSoal[i].tipe
                                     if (dataSoal[i].soal != null) {
                                         kolomQ2.visibility = View.VISIBLE
                                         if (dataSoal[i].tipe == "Radio") {
@@ -80,6 +86,7 @@ class FormActivity : AppCompatActivity() {
                                         }
                                     }
                                 } else if (i == 2) {
+                                    tipeQ3 = dataSoal[i].tipe
                                     if (dataSoal[i].soal != null) {
                                         kolomQ3.visibility = View.VISIBLE
                                         if (dataSoal[i].tipe == "Radio") {
@@ -96,6 +103,7 @@ class FormActivity : AppCompatActivity() {
                                         }
                                     }
                                 } else if (i == 3) {
+                                    tipeQ4 = dataSoal[i].tipe
                                     if (dataSoal[i].soal != null) {
                                         kolomQ4.visibility = View.VISIBLE
                                         if (dataSoal[i].tipe == "Radio") {
@@ -121,6 +129,87 @@ class FormActivity : AppCompatActivity() {
                     }
                 })
 
+        btnSubmitFormResign.setOnClickListener {
+            val Q1 = txtQ1.text?.toString()
+            val Q2 = txtQ2.text?.toString()
+            val Q3 = txtQ3.text?.toString()
+            val Q4 = txtQ4.text?.toString()
+            var Answer1: String? = null
+            var Answer2: String? = null
+            var Answer3: String? = null
+            var Answer4: String? = null
+            val AT1 = input_text_Q1.text.toString()
+            val AT2 = input_text_Q2.text.toString()
+            val AT3 = input_text_Q3.text.toString()
+            val AT4 = input_text_Q4.text.toString()
+
+            val AR1 = getRadio(radioGroupQ1)
+            val AR2 = getRadio(radioGroupQ2)
+            val AR3 = getRadio(radioGroupQ3)
+            val AR4 = getRadio(radioGroupQ4)
+
+            if (Q1 != null) {
+                if (tipeQ1 == "Text") {
+                    Answer1 = input_text_Q1.text.toString()
+                } else {
+                    Answer1 = getRadio(radioGroupQ1)
+                }
+            }
+            if (Q2 != null) {
+                if (tipeQ2 == "Text") {
+                    Answer2 = input_text_Q2.text.toString()
+                } else {
+                    Answer2 = getRadio(radioGroupQ2)
+                }
+            }
+            if (Q3 != null) {
+                if (tipeQ3 == "Text") {
+                    Answer3 = input_text_Q3.text.toString()
+                } else {
+                    Answer3 = getRadio(radioGroupQ3)
+                }
+            }
+            if (Q4 != null) {
+                if (tipeQ4 == "Text") {
+                    Answer4 = input_text_Q4.text.toString()
+                } else {
+                    Answer4 = getRadio(radioGroupQ4)
+                }
+            }
+            retrofit.getTambahForm(IDLogin, NamaLogin, Q1, Answer1, Q2, Answer2, Q3, Answer3, Q4, Answer4)
+                    .enqueue(object : retrofit2.Callback<PostFormModel> {
+                        override fun onFailure(call: Call<PostFormModel>, t: Throwable) {
+                            Log.d("gagal", "Gagal kirim form")
+
+                        }
+
+                        override fun onResponse(call: Call<PostFormModel>, response: Response<PostFormModel>) {
+                            val data = response?.body()
+                            val msg = data?.apiMessage
+                            if (msg != "Send data Error") {
+//                                 Toast.makeText(this@ChangePasswordActivity, msg, Toast.LENGTH_SHORT).show()
+                                basicAlert(msg, "Selamat Form terkirim")
+
+                            } else {
+//                                 Toast.makeText(this@ChangePasswordActivity, msg, Toast.LENGTH_SHORT).show()
+                                basicAlert(msg, "Maaf send data error")
+
+                            }
+                        }
+                    })
+
+        }
+    }
+
+    fun getRadio(radio: RadioGroup): String {
+        val selected = radio.getCheckedRadioButtonId()
+        val radiobutton = findViewById<RadioButton>(selected)
+        return radiobutton.getText().toString()
+    }
+
+    fun cekForm(input: Any?): Any? {
+        if (input != null) return input
+        else return null
     }
 
     fun setData(datas: List<SoalModel>) {

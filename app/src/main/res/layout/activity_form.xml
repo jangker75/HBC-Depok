@@ -30,7 +30,7 @@
 
             <LinearLayout
                 android:id="@+id/kolomQ1"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -47,8 +47,9 @@
                     android:id="@+id/txtQ1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Alasan Pengunduran Diri?"
                     android:textSize="20sp" />
+                <!--android:text="Alasan Pengunduran Diri?"-->
+
 
                 <EditText
                     android:visibility="visible"
@@ -70,20 +71,22 @@
                         android:id="@+id/radio1Q1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Perkerjaan" />
+                        android:checked="true" />
+                    <!--android:text="Perkerjaan"-->
+
 
                     <RadioButton
                         android:id="@+id/radio2Q1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Keluarga" />
+                        android:layout_height="wrap_content" />
+                    <!--android:text="Keluarga" -->
+
 
                     <RadioButton
                         android:id="@+id/radio3Q1"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lainnya" />
+                        android:layout_height="wrap_content" />
+                    <!--android:text="Lainnya"-->
 
 
                 </RadioGroup>
@@ -280,6 +283,13 @@
 
             </LinearLayout>
 
+            <Button
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:id="@+id/btnSubmitFormResign"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Submit" />
         </LinearLayout>
     </ScrollView>
 
