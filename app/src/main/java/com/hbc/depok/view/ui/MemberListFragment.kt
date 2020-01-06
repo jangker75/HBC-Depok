@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.hbc.depok.viewmodel.MemberListViewModel
 import com.hbc.depok.R
 import com.hbc.depok.adapter.ListMemberAdapter
@@ -30,6 +31,21 @@ class MemberListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MemberListViewModel::class.java)
 
+        viewModel.refresh()
+
+        list.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = memberListAdapter
+        }
+
+        refreshLayout.setOnRefreshListener {
+            list.visibility = View.GONE
+            textStatus.visibility = View.GONE
+            loadingView.visibility = View.VISIBLE
+//            viewModel.refreshBypassCache()
+            viewModel.refresh()
+            refreshLayout.isRefreshing = false
+        }
 //        viewModel.getStatus().observe(this, Observer { t ->
 //            if (t ?: true) {
 //                list.visibility = View.GONE
@@ -40,11 +56,12 @@ class MemberListFragment : Fragment() {
 //            }
 //
 //        })
-//
+
 //        viewModel.setData().observe(this, Observer { t ->
 //            t?.data?.let { showData(it) }
 //        })
-//    }
+        observeViewModel()
+    }
 
 
 //    private fun showData(data: ArrayList<DataMember>) {
@@ -52,31 +69,29 @@ class MemberListFragment : Fragment() {
 //
 //    }
 
-        list.adapter = ListMemberAdapter()
+//        list.adapter = ListMemberAdapter()
+//
+//
+//        observeViewModel()
 
 
-        observeViewModel()
-
-    }
-
-    fun observeViewModel() {
+   private fun observeViewModel() {
         viewModel.members.observe(this, Observer { member ->
             member?.let {
                 list.visibility = View.VISIBLE
-
-//                memberListAdapter.updateMemberList(it)
+                memberListAdapter.updateMemberList(it)
             }
 
         })
-        viewModel.membersLoadError.observe(this, Observer { isError ->
-            isError?.let {
-                textStatus.visibility = if (isError) View.VISIBLE else View.GONE
+        viewModel.statusError.observe(this, Observer { Error ->
+            Error?.let {
+                textStatus.visibility = if (Error) View.VISIBLE else View.GONE
             }
         })
-        viewModel.loading.observe(this, Observer { isLoading ->
-            isLoading?.let {
-                loadingView.visibility = if (isLoading) View.VISIBLE else View.GONE
-                if (isLoading) {
+        viewModel.loading.observe(this, Observer { Loading ->
+            Loading?.let {
+                loadingView.visibility = if (Loading) View.VISIBLE else View.GONE
+                if (Loading) {
                     textStatus.visibility = View.GONE
                     list.visibility = View.GONE
                 }

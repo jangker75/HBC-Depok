@@ -20,6 +20,8 @@ class ListMemberAdapter() :
 
     private val data: MutableList<DataMember> = mutableListOf()
 //    private val data: MutableList<MemberModel> = mutableListOf()
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val dataBinding =

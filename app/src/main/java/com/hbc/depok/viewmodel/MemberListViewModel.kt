@@ -13,27 +13,33 @@ import com.hbc.depok.network.Api
 import com.hbc.depok.network.ApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 class MemberListViewModel(application: Application) : BaseViewModel(application) {
     //    private var data = MutableLiveData<Member>()
-    private var status = MutableLiveData<Boolean>()
+
     private val disposable = CompositeDisposable()
-    private val apiService: ApiService? = null
-    private val memberListAdapter = ListMemberAdapter()
+    // private val apiService: ApiService? = null
+    private val TAG = "MemberListViewModel"
+    val apiService by lazy {
+        ApiService.create()
+    }
+
     //    private val dataMembers: MutableList<DataMember> = mutableListOf()
-    val members = MutableLiveData<List<Member>>()
-    val membersLoadError = MutableLiveData<Boolean>()
+    var members = MutableLiveData<List<DataMember>>()
+    var statusError = MutableLiveData<Boolean>()
+    //    val membersLoadError = MutableLiveData<Boolean>()
     val loading = MutableLiveData<Boolean>()
 
-//    init {
+    //    init {
 //        getData()
 //    }
-init {
-    fetchDataFromRemote()
-}
+    init {
+        fetchDataFromRemote()
+    }
 
     //    private fun getData() {
 //
@@ -79,33 +85,46 @@ init {
 //        )
 //    }
     private fun fetchDataFromRemote() {
-//        loading.value = true
+        loading.value = true
         disposable.add(
-                apiService!!.retrofit.getDaftarMember()
+                apiService.getDaftarMember()
                         .subscribeOn(Schedulers.io())
                         .unsubscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                {
-                                    memberListAdapter.updateMemberList(it.data)
+                                { result ->
+                                    members.value = result.data
+                                    loading.value = false
+                                    Log.d(TAG, "FetchDataFromRemote : data is ${result.data}")
                                 },
-                                { Log.d("FetchDataFromRemote :", "tidak bisa") }
+                                { e ->
+                                    statusError.value = true
+                                    loading.value = false
+                                    e.printStackTrace()
+                                    Log.d("FetchDataFromRemote :", "tidak bisa statusError: ${statusError.value} loading : ${loading.value}")
+                                }
                         )
         )
+
+
     }
 
 //    fun setData(): MutableLiveData<List<DataMember>> {
 //        return
 //    }
 
-    fun getStatus(): MutableLiveData<Boolean> {
-        status.value = true
-        return status
-    }
+//    fun getStatus(): MutableLiveData<Boolean> {
+//        statusError.value = true
+//        return statusError
+//    }
 
     override fun onCleared() {
         super.onCleared()
         disposable.clear()
+    }
+
+    fun refresh() {
+        fetchDataFromRemote()
     }
 }
 

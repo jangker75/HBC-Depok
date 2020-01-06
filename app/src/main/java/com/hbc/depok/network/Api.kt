@@ -1,5 +1,6 @@
 package com.hbc.depok.network
 
+import com.hbc.depok.model.DataMember
 import com.hbc.depok.model.Member
 import io.reactivex.Observable
 import io.reactivex.Single
