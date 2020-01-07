@@ -10,7 +10,7 @@
 
         <variable
             name="listener"
-            type="com.hbc.depok.view.ui.MemberClickListener" />
+            type="com.hbc.depok.view.ui.listmember.MemberClickListener" />
     </data>
 
     <LinearLayout

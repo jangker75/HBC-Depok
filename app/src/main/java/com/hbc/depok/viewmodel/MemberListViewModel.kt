@@ -25,18 +25,13 @@ class MemberListViewModel(application: Application) : BaseViewModel(application)
     // private val apiService: ApiService? = null
     private val TAG = "MemberListViewModel"
     val apiService by lazy {
-        ApiService.create()
+        ApiService.api
     }
-
-    //    private val dataMembers: MutableList<DataMember> = mutableListOf()
     var members = MutableLiveData<List<DataMember>>()
     var statusError = MutableLiveData<Boolean>()
-    //    val membersLoadError = MutableLiveData<Boolean>()
+
     val loading = MutableLiveData<Boolean>()
 
-    //    init {
-//        getData()
-//    }
     init {
         fetchDataFromRemote()
     }
@@ -84,10 +79,33 @@ class MemberListViewModel(application: Application) : BaseViewModel(application)
 //                        })
 //        )
 //    }
+//    private fun fetchDataFromRemote() {
+//        loading.value = true
+//        disposable.add(
+//                apiService.getDaftarMember()
+//                        .subscribeOn(Schedulers.io())
+//                        .unsubscribeOn(Schedulers.computation())
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(
+//                                { result ->
+//                                    members.value = result.data
+//                                    loading.value = false
+//                                    Log.d(TAG, "FetchDataFromRemote : data is ${result.data}")
+//                                },
+//                                { e ->
+//                                    statusError.value = true
+//                                    loading.value = false
+//                                    e.printStackTrace()
+//                                    Log.d("FetchDataFromRemote :", "tidak bisa statusError: ${statusError.value} loading : ${loading.value}")
+//                                }
+//                        )
+//        )
+//    }
+
     private fun fetchDataFromRemote() {
         loading.value = true
         disposable.add(
-                apiService.getDaftarMember()
+                apiService.getDaftarMemberChapter("2")
                         .subscribeOn(Schedulers.io())
                         .unsubscribeOn(Schedulers.computation())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -105,8 +123,6 @@ class MemberListViewModel(application: Application) : BaseViewModel(application)
                                 }
                         )
         )
-
-
     }
 
 //    fun setData(): MutableLiveData<List<DataMember>> {

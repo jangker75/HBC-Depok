@@ -1,4 +1,4 @@
-package com.hbc.depok.view.ui
+package com.hbc.depok.view.ui.listmember
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

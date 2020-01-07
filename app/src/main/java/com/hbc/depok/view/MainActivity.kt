@@ -3,7 +3,7 @@ package com.hbc.depok.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.hbc.depok.R
-import com.hbc.depok.view.ui.MemberListFragment
+import com.hbc.depok.view.ui.listmember.MemberListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction().replace(R.id.container,MemberListFragment()).commit()
+        supportFragmentManager.beginTransaction().replace(R.id.container, MemberListFragment()).commit()
     }
 }

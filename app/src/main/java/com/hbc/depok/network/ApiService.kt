@@ -12,14 +12,16 @@ class ApiService {
 
     companion object {
         private val BASE_URL = "http://hbcdepok.com/data/public/api/"
-        fun create(): Api {
+
+        val api = getRetrofit().create(Api::class.java)
+        fun getRetrofit():Retrofit {
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(BASE_URL)
                     .build()
-            val api = retrofit.create(Api::class.java)
-            return api
+
+            return retrofit
         }
     }
 

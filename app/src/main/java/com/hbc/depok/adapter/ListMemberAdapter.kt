@@ -4,16 +4,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hbc.depok.R
 import com.hbc.depok.databinding.MemberItemBinding
 import com.hbc.depok.model.DataMember
-import com.hbc.depok.model.Member
-import com.hbc.depok.view.ui.MemberClickListener
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.member_item.view.*
+import com.hbc.depok.view.ui.listmember.MemberClickListener
 
 class ListMemberAdapter() :
         RecyclerView.Adapter<ListMemberAdapter.MemberViewHolder>(), MemberClickListener {

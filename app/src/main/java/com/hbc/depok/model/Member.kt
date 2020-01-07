@@ -1,6 +1,5 @@
 package com.hbc.depok.model
 
-
 import com.google.gson.annotations.SerializedName
 
 class Member{
