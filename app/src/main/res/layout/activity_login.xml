@@ -16,30 +16,17 @@
         android:background="@color/colorPrimary">
 
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@mipmap/ic_progress"
-            app:layout_constraintBottom_toTopOf="@+id/bottomLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <LinearLayout
             android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_login_bottom_bg"
             android:orientation="vertical"
-            android:paddingEnd="25dp"
-            android:paddingStart="25dp"
+            android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,25 +41,24 @@
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_person" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="17dp"
                     android:hint="@string/email">
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
                         android:inputType="text"
-                        android:onTextChanged="@{viewmodel::onEmailChanged}"
                         android:paddingStart="5dp"
-                        android:text="@={viewmodel.email}"
+                        android:text="@={data.email}"
                         android:textColor="#383838"
                         android:textSize="20sp"
                         app:backgroundTint="#00ce8f" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -88,25 +74,24 @@
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_lock" />
 
-                <android.support.design.widget.TextInputLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="17dp"
-                    android:hint="@string/password">
+                    android:hint="Password">
 
-                    <android.support.v7.widget.AppCompatEditText
+                    <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="actionDone"
                         android:inputType="textPassword"
-                        android:onTextChanged="@{viewmodel::onPasswordChanged}"
                         android:paddingStart="5dp"
-                        android:text="@={viewmodel.password}"
+                        android:text="@={data.password}"
                         android:textColor="#383838"
                         android:textSize="20sp"
                         app:backgroundTint="#00ce8f" />
 
-                </android.support.design.widget.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
 
@@ -116,14 +101,24 @@
                 android:layout_width="152dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="24dp"
                 android:layout_marginTop="24dp"
-                android:enabled="@{viewmodel.btnSelected}"
-                android:onClick="@{()->viewmodel.login()}"
+                android:layout_marginBottom="24dp"
+                android:onClick="@{()->data.loginClicked()}"
                 android:text="@string/login" />
 
 
-
         </LinearLayout>
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

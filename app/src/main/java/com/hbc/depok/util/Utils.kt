@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.hbc.depok.R
+import java.util.regex.Pattern
 
 
 fun getProgressDrawable(context: Context): CircularProgressDrawable {
@@ -30,4 +31,11 @@ fun ImageView.loadImage(uri: String?, progressDrawable: CircularProgressDrawable
 @BindingAdapter("android:imageUrl")
 fun loadImage(view: ImageView, url: String?) {
     view.loadImage(url, getProgressDrawable(view.context))
+}
+
+fun isEmailValid(email: String): Boolean {
+    val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+    val pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+    val matcher = pattern.matcher(email)
+    return matcher.matches()
 }

@@ -1,21 +1,13 @@
 package com.hbc.depok.viewmodel
 
 import android.app.Application
-import android.provider.ContactsContract
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.hbc.depok.adapter.ListMemberAdapter
 import com.hbc.depok.model.DataMember
-import com.hbc.depok.model.Member
-import com.hbc.depok.network.Api
 
 import com.hbc.depok.network.ApiService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import io.reactivex.observers.DisposableObserver
-import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 class MemberListViewModel(application: Application) : BaseViewModel(application) {

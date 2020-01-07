@@ -16,7 +16,7 @@ interface Api {
     fun getDaftarMemberChapter(
             @Query("id_chapter") id_chapter: String): Observable<Member>
 
-    @GET("auth/login")
+    @GET("cek_login")
     fun login(
             @Query("kode_anggota") id_anggota: String,
             @Query("password") password: String): Observable<LoginUser>

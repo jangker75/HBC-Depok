@@ -14,26 +14,14 @@ class ApiService {
         private val BASE_URL = "http://hbcdepok.com/data/public/api/"
 
         val api = getRetrofit().create(Api::class.java)
-        fun getRetrofit():Retrofit {
+
+        fun getRetrofit(): Retrofit {
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(BASE_URL)
                     .build()
-
             return retrofit
         }
     }
-
-
-//    private val api = Retrofit.Builder()
-//            .baseUrl(BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//            .build()
-//    val retrofit = api.create(Api::class.java)
-
-//    fun getMember(): List<Member>{
-//        return api.getDaftarMember()
-//    }
 }
