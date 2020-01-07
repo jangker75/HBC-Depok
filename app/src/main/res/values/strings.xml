@@ -2,4 +2,5 @@
     <string name="app_name">HBC Depok</string>
 
     <string name="title_activity_login">Sign in</string>
+    <string name="login">Login</string>
 </resources>
