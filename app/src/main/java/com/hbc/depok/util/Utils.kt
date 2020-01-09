@@ -1,12 +1,15 @@
 package com.hbc.depok.util
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.hbc.depok.R
+import com.hbc.depok.view.MainActivity
 import java.util.regex.Pattern
 
 
@@ -39,3 +42,4 @@ fun isEmailValid(email: String): Boolean {
     val matcher = pattern.matcher(email)
     return matcher.matches()
 }
+

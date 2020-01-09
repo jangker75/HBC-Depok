@@ -6,26 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hbc.depok.viewmodel.MenuViewModel
+import com.hbc.depok.viewmodel.ArtikelViewModel
 import com.hbc.depok.R
 
 
-class MenuFragment : Fragment() {
+class ArtikelFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MenuFragment()
+        fun newInstance() = ArtikelFragment()
     }
 
-    private lateinit var viewModel: MenuViewModel
+    private lateinit var viewModel: ArtikelViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.menu_fragment, container, false)
+        return inflater.inflate(R.layout.artikel_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MenuViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ArtikelViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

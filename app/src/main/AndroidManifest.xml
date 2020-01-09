@@ -25,6 +25,7 @@
             android:name=".view.MainActivity"
             android:launchMode="singleTop">
 
+
         </activity>
     </application>
 

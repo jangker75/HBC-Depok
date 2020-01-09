@@ -2,6 +2,6 @@ package com.hbc.depok.viewmodel
 
 import androidx.lifecycle.ViewModel
 
-class MenuViewModel : ViewModel() {
+class ArtikelViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

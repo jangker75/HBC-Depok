@@ -44,8 +44,6 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
 
     fun onPasswordChanged(s: CharSequence, start: Int, befor: Int, count: Int) {
         btnSelected?.set(isEmailValid(email?.get()!!) && s.toString().length >= 8)
-
-
     }
 
     fun loginClicked() {

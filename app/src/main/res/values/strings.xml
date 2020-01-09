@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HBC Depok</string>
 
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Login</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
 </resources>

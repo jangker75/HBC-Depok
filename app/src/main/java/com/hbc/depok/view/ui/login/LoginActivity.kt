@@ -1,5 +1,7 @@
 package com.hbc.depok.view.ui.login
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,9 +18,12 @@ import com.hbc.depok.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
-val TAG = "LoginActivity"
+    val TAG = "LoginActivity"
+
     private lateinit var viewmodel: LoginViewModel
+//    private var preferenceHelper: PreferenceHelper? = null
     var binding: ActivityLoginBinding? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,15 +33,29 @@ val TAG = "LoginActivity"
         binding?.data = viewmodel
 
         observeViewModel()
+//        preferenceHelper = PreferenceHelper(this)
+//
+//        if (preferenceHelper!!.getIsLogin())
+//        {
+//            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+//            preferenceHelper!!.putIsLogin(true)
+//            startActivity(intent)
+//            this.finish()
+//        }
+
     }
 
-    private fun observeViewModel(){
-        viewmodel.login.observe(this, Observer { user->
-            if (user.apiStatus != 0){
+
+    private fun observeViewModel() {
+        viewmodel.login.observe(this, Observer { user ->
+            if (user.apiStatus != 0) {
                 Log.d(TAG, "Data sukses $user")
                 Toast.makeText(this, "welcome, ${user?.nama}", Toast.LENGTH_LONG).show()
-                startActivity(Intent(application, MainActivity::class.java))
-            }else{
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                startActivity(Intent(intent))
+                this.finish()
+            } else {
                 Log.d(TAG, "Data error $user")
                 Toast.makeText(this, "Username atau Password Salah", Toast.LENGTH_LONG).show()
             }
