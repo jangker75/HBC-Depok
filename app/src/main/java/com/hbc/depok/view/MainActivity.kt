@@ -8,8 +8,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.hbc.depok.R
-import com.hbc.depok.view.ui.ArtikelFragment
-import com.hbc.depok.view.ui.PengurusFragment
+import com.hbc.depok.view.ui.artikel.ArtikelFragment
+import com.hbc.depok.view.ui.pengurus.PengurusFragment
 import com.hbc.depok.view.ui.listmember.MemberListFragment
 
 class MainActivity : AppCompatActivity() {

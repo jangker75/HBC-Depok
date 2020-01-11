@@ -1,4 +1,4 @@
-package com.hbc.depok.view.ui
+package com.hbc.depok.view.ui.artikel
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -6,26 +6,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.hbc.depok.viewmodel.PengurusViewModel
+import com.hbc.depok.viewmodel.ArtikelViewModel
 import com.hbc.depok.R
 
 
-class PengurusFragment : Fragment() {
+class ArtikelFragment : Fragment() {
 
     companion object {
-        fun newInstance() = PengurusFragment()
+        fun newInstance() = ArtikelFragment()
     }
 
-    private lateinit var viewModel: PengurusViewModel
+    private lateinit var viewModel: ArtikelViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.pengurus_fragment, container, false)
+        return inflater.inflate(R.layout.artikel_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(PengurusViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ArtikelViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
